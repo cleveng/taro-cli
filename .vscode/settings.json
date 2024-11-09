@@ -5,7 +5,7 @@
   },
   "editor.formatOnSave": true,
   "explorer.compactFolders": false,
-  "prettier.enable": true,
+  "prettier.enable": false,
   "prettier.arrowParens": "avoid",
   "prettier.jsxSingleQuote": true,
   "prettier.singleQuote": true,
