@@ -3,15 +3,12 @@
   "singleQuote": true,
   "jsxSingleQuote": true,
   "semi": false,
-  "trailingComma": "es5",
+  "trailingComma": "none",
   "arrowParens": "avoid",
   "printWidth": 120,
   "tabWidth": 2,
   "plugins": [],
-  "importOrder": [
-    "^@?\\w",
-    "^[./]"
-  ],
+  "importOrder": ["^@?\\w", "^[./]"],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true
 }

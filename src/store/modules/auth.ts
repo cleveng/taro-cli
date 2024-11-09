@@ -1,5 +1,5 @@
+import { piniaStorage, StorageSceneKey } from '@/libs'
 import { defineStore } from 'pinia'
-import { piniaStorage, StorageSceneKey } from '../../libs/storage'
 
 export interface AuthState {
   loggedIn: boolean
@@ -18,12 +18,12 @@ export const useAuthStore = defineStore(StorageSceneKey.USER, {
     loggedIn: false,
     token: null,
     app: null,
-    redirect: null,
+    redirect: null
   }),
   getters: {
     getToken(): string {
       return this.token
-    },
+    }
   },
   actions: {
     setToken(token: string) {
@@ -37,11 +37,11 @@ export const useAuthStore = defineStore(StorageSceneKey.USER, {
     setRedirect(value: Redirect) {
       this.redirect = value
     },
-    clear() {},
+    clear() {}
   },
   persist: {
     key: StorageSceneKey.USER,
     // pinia-plugin-persistedstate 插件的默认持久化方案只支持web端，在Taro里使用需要自定义进行覆盖
-    storage: piniaStorage,
-  },
+    storage: piniaStorage
+  }
 })

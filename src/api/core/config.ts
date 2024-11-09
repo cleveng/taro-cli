@@ -7,7 +7,7 @@ enum ErrorShowType {
   WARN_MESSAGE = 1,
   ERROR_MESSAGE = 2,
   NOTIFICATION = 3,
-  REDIRECT = 9,
+  REDIRECT = 9
 }
 
 // 与后端约定的响应数据格式
@@ -63,7 +63,7 @@ const requestConfig: RequestConfig<ResponseStructure> = {
           errorCode: errorCode ?? code,
           errorMessage: errorMessage ?? message,
           showType,
-          data,
+          data
         }
         throw error // 抛出自定义的错误,请求方法中的 .catch 部分会捕获
       }
@@ -94,7 +94,7 @@ const requestConfig: RequestConfig<ResponseStructure> = {
         // TODO
         console.error('Request error, please retry')
       }
-    },
+    }
   },
   requestInterceptors: [
     [
@@ -103,10 +103,10 @@ const requestConfig: RequestConfig<ResponseStructure> = {
         // TODO
         return { ...config }
       },
-      (error: AxiosError) => {
+      async (error: AxiosError) => {
         return Promise.reject(error)
-      },
-    ],
+      }
+    ]
   ],
   // 状态码 2xx 的时候才会进入响应拦截,其他情况已经在请求方法中的.catch部分处理了
   responseInterceptors: [
@@ -117,8 +117,8 @@ const requestConfig: RequestConfig<ResponseStructure> = {
         requestConfig.errorConfig?.errorThrower?.(data)
       }
       return response
-    },
-  ],
+    }
+  ]
 }
 
 export default requestConfig

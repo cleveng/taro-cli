@@ -3,7 +3,7 @@ import { getStorageSync, removeStorageSync, setStorageSync } from '@tarojs/taro'
 
 enum StorageSceneKey {
   USER = 'storage-user',
-  AUTH = 'storage-auth',
+  AUTH = 'storage-auth'
 }
 
 function getItem<T = any>(key: string): T {
@@ -29,5 +29,5 @@ export const piniaStorage: StorageLike = {
   },
   setItem: (key, value) => {
     setStorageSync(key, value)
-  },
+  }
 }

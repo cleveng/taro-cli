@@ -1,5 +1,4 @@
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <view class="flex flex-col items-center justify-center gap-2 h-full">

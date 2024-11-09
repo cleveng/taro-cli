@@ -14,13 +14,13 @@ export default {
               terserOptions: {
                 compress: true,
                 keep_classnames: true,
-                keep_fnames: true,
-              },
-            },
-          },
-        },
+                keep_fnames: true
+              }
+            }
+          }
+        }
       })
-    },
+    }
   },
   h5: {
     /**
@@ -49,5 +49,5 @@ export default {
     //       postProcess: (context) => ({ ...context, outputPath: path.join(staticDir, 'index.html') })
     //     }))
     // }
-  },
-} satisfies UserConfigExport<'webpack5'>
+  }
+} satisfies UserConfigExport

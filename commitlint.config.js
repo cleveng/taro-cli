@@ -1,4 +1,3 @@
-/* eslint-disable import/no-commonjs */
 /* eslint-env node */
 module.exports = {
   extends: ['@commitlint/config-conventional'],

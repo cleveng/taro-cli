@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 module.exports = {
   root: true,
   plugins: ['stylelint-order'],
@@ -50,7 +49,8 @@ module.exports = {
     'font-family-no-missing-generic-family-keyword': null,
     'declaration-colon-space-after': 'always-single-line',
     'declaration-colon-space-before': 'never',
-    // 'declaration-block-trailing-semicolon': 'always',
+    'declaration-block-no-duplicate-properties': null,
+    'declaration-block-trailing-semicolon': 'always',
     'rule-empty-line-before': [
       'always',
       {

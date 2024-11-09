@@ -17,29 +17,15 @@
     "jsx": "preserve",
     "allowJs": true,
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
     "noImplicitAny": false,
     "skipLibCheck": true,
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "#/types/*": [
-        "./types/*"
-      ]
+      "@/*": ["./src/*"],
+      "#/types/*": ["./types/*"]
     }
   },
-  "include": [
-    "./src",
-    "./types",
-    "./config",
-    "components.d.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
+  "include": ["./src", "./types", "./config", "components.d.ts"],
+  "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }

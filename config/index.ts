@@ -14,8 +14,8 @@ import prodConfig from './prod'
 const WeappTailwindcssDisabled = ['h5', 'rn'].includes(process?.env?.TARO_ENV)
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
-export default defineConfig<'webpack5'>(async (merge, _: ConfigEnv) => {
-  const baseConfig: UserConfigExport<'webpack5'> = {
+export default defineConfig(async (merge, _: ConfigEnv) => {
+  const baseConfig: UserConfigExport = {
     projectName: 'taro-app',
     date: '2024-11-6',
     designWidth(input?: Input) {
@@ -30,31 +30,31 @@ export default defineConfig<'webpack5'>(async (merge, _: ConfigEnv) => {
       640: 2.34 / 2,
       750: 1,
       375: 2,
-      828: 1.81 / 2,
+      828: 1.81 / 2
     },
     sourceRoot: 'src',
     outputRoot: 'dist',
     plugins: ['@tarojs/plugin-html', '@tarojs/plugin-http'],
     alias: {
-      '@': path.resolve(__dirname, '../src'),
+      '@': path.resolve(__dirname, '../src')
     },
     sass: {
-      data: `@import "@nutui/nutui-taro/dist/styles/variables.scss";`,
+      data: `@import "@nutui/nutui-taro/dist/styles/variables.scss";`
     },
     defineConstants: {},
     copy: {
       patterns: [],
-      options: {},
+      options: {}
     },
     framework: 'vue3',
     compiler: {
       type: 'webpack5',
       prebundle: {
-        enable: false,
-      },
+        enable: false
+      }
     },
     cache: {
-      enable: false, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
+      enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
     mini: {
       webpackChain(chain) {
@@ -64,41 +64,41 @@ export default defineConfig<'webpack5'>(async (merge, _: ConfigEnv) => {
             include: [
               /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
               /\.vue$/,
-              /\.vue\?vue/, // .vue
+              /\.vue\?vue/ // .vue
             ],
-            resolvers: [NutUIResolver({ taro: true })],
-          }),
+            resolvers: [NutUIResolver({ taro: true })]
+          })
         )
         chain.merge({
           plugin: {
             install: {
               plugin: UnifiedWebpackPluginV5,
-              args: [{ appType: 'taro', disabled: WeappTailwindcssDisabled }],
-            },
-          },
+              args: [{ appType: 'taro', disabled: WeappTailwindcssDisabled }]
+            }
+          }
         })
       },
       postcss: {
         pxtransform: {
           enable: true,
           config: {
-            selectorBlackList: ['nut-'],
-          },
+            selectorBlackList: ['nut-']
+          }
         },
         url: {
           enable: true,
           config: {
-            limit: 1024, // 设定转换尺寸上限
-          },
+            limit: 1024 // 设定转换尺寸上限
+          }
         },
         cssModules: {
           enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
           config: {
             namingPattern: 'module', // 转换模式，取值为 global/module
-            generateScopedName: '[name]__[local]___[hash:base64:5]',
-          },
-        },
-      },
+            generateScopedName: '[name]__[local]___[hash:base64:5]'
+          }
+        }
+      }
     },
     h5: {
       publicPath: '/',
@@ -107,7 +107,7 @@ export default defineConfig<'webpack5'>(async (merge, _: ConfigEnv) => {
       miniCssExtractPluginOption: {
         ignoreOrder: true,
         filename: 'css/[name].[hash].css',
-        chunkFilename: 'css/[name].[chunkhash].css',
+        chunkFilename: 'css/[name].[chunkhash].css'
       },
       webpackChain(chain) {
         chain.plugin('unplugin-vue-components').use(
@@ -115,40 +115,40 @@ export default defineConfig<'webpack5'>(async (merge, _: ConfigEnv) => {
             include: [
               /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
               /\.vue$/,
-              /\.vue\?vue/, // .vue
+              /\.vue\?vue/ // .vue
             ],
-            resolvers: [NutUIResolver({ taro: true })],
-          }),
+            resolvers: [NutUIResolver({ taro: true })]
+          })
         )
       },
       postcss: {
         pxtransform: {
           enable: true,
           config: {
-            selectorBlackList: ['nut-'],
-          },
+            selectorBlackList: ['nut-']
+          }
         },
         autoprefixer: {
           enable: true,
-          config: {},
+          config: {}
         },
         cssModules: {
           enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
           config: {
             namingPattern: 'module', // 转换模式，取值为 global/module
-            generateScopedName: '[name]__[local]___[hash:base64:5]',
-          },
-        },
-      },
+            generateScopedName: '[name]__[local]___[hash:base64:5]'
+          }
+        }
+      }
     },
     rn: {
       appName: 'taroDemo',
       postcss: {
         cssModules: {
-          enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
-        },
-      },
-    },
+          enable: false // 默认为 false，如需使用 css modules 功能，则设为 true
+        }
+      }
+    }
   }
   // eslint-disable-next-line node/prefer-global/process
   if (process?.env?.NODE_ENV === 'development') {

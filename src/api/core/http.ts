@@ -1,6 +1,8 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-// @ts-expect-error
+
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-ignore
 import utils from 'axios/unsafe/utils'
 import requestConfig from './config'
 
@@ -88,8 +90,8 @@ class AxiosRequest {
     baseURL: 'http://localhost:8100',
     timeout: 10000,
     headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
+      'Content-Type': 'application/json;charset=utf-8'
+    }
   }
 
   constructor(enforcer: any) {
@@ -127,11 +129,11 @@ class AxiosRequest {
    * @param url 接口地址
    * @param opts 请求参数
    */
-  request: IRequest = (url: string, opts = { method: 'GET' }) => {
+  request: IRequest = async (url: string, opts = { method: 'GET' }) => {
     const { getResponse = false, requestInterceptors, responseInterceptors } = opts
     const { requestInterceptorsToEject, responseInterceptorsToEject } = this.getInterceptorsEject({
       requestInterceptors,
-      responseInterceptors,
+      responseInterceptors
     })
     return new Promise((resolve, reject) => {
       this.service
@@ -163,12 +165,12 @@ class AxiosRequest {
    * @param data
    * @param opts 请求参数
    */
-  upload: IUpload = (url: string, data, opts = {}) => {
+  upload: IUpload = async (url: string, data, opts = {}) => {
     opts.headers = opts.headers ?? { 'Content-Type': 'multipart/form-data' }
     const { getResponse = false, requestInterceptors, responseInterceptors } = opts
     const { requestInterceptorsToEject, responseInterceptorsToEject } = this.getInterceptorsEject({
       requestInterceptors,
-      responseInterceptors,
+      responseInterceptors
     })
     return new Promise((resolve, reject) => {
       this.service
@@ -199,12 +201,12 @@ class AxiosRequest {
    * @param url 资源地址
    * @param opts 请求参数
    */
-  download: IRequest = (url: string, opts = {}) => {
+  download: IRequest = async (url: string, opts = {}) => {
     opts.responseType = opts.responseType ?? 'blob'
     const { getResponse = false, requestInterceptors, responseInterceptors } = opts
     const { requestInterceptorsToEject, responseInterceptorsToEject } = this.getInterceptorsEject({
       requestInterceptors,
-      responseInterceptors,
+      responseInterceptors
     })
     return new Promise((resolve, reject) => {
       this.service
@@ -288,5 +290,5 @@ export type {
   IResponseInterceptor as ResponseInterceptor,
   IUpload as Upload,
   RequestConfig,
-  RequestError,
+  RequestError
 }

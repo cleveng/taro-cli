@@ -4,7 +4,7 @@ import type { UserConfigExport } from '@tarojs/cli'
 export default {
   logger: {
     quiet: false,
-    stats: true,
+    stats: true
   },
   plugins: [],
   mini: {},
@@ -14,9 +14,9 @@ export default {
         '/api': {
           target: process.env.TARO_APP_API,
           changeOrigin: true,
-          pathRewrite: { '^/api': '' },
-        },
-      },
-    },
-  },
-} satisfies UserConfigExport<'webpack5'>
+          pathRewrite: { '^/api': '' }
+        }
+      }
+    }
+  }
+} satisfies UserConfigExport
